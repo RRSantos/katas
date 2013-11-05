@@ -1,0 +1,4 @@
+Katas
+http://codingdojo.org/cgi-bin/wiki.pl?KataCatalogue
+http://amirrajan.net/Blog/code-katas
+http://content.codersdojo.org/code-kata-catalogue/
