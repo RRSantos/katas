@@ -3,5 +3,5 @@ var assert = require('assert');
 var test = new fizzBuzz();
 
 it('should return fizz', function(){
-	assert('Fizz', test.doThatMagic(3));
+	assert.equal('Fizz', test.doThatMagic(3));
 });
