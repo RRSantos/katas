@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Lista de compras</title>	
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+	<div class="container" ng-controller="ListaComprasController">
+		<div class="row">
+			<div class="page-header"><h1>Lista de compras</h1></div>
+		</div>
+
+		<div class="row">			
+			<div class="col-md-5">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Produto</th>
+							<th>Quantidade</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in items">
+							<td>{{item.id}}</td>
+							<td>{{item.produto}}</td>
+							<td>{{item.quantidade}}</td>
+							<td>
+								<a href="#" ng-click="editarItem(item)">editar</a> |
+								<a href="#" ng-click="excluirItem(item)">excluir</a>
+							</td>
+						</tr>
+						<tr class="quantidade-total">
+							<td colspan="2"><strong>Total</strong></td>
+							<td>{{getQuantidadeTotal()}}</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-md-6">
+				<form class="form-inline" name="formItem">
+					<div class="row">
+
+						<div class="col-md-5">
+							<input type="text" ng-model="item.produto" class="form-control" placeholder="produto"> 
+						</div>
+						<div class="col-md-3">
+							<input type="number" ng-model="item.quantidade" class="form-control" placeholder="quantidade">
+						</div>
+						<button class="btn btn-primary " ng-click="salvar()"> gravar </button>
+					</div>
+					<input type="hidden" ng-model="item.id" value='1'>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="scripts/main.js"></script>
