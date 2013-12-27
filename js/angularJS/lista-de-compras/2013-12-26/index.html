@@ -33,7 +33,7 @@
 								<a href="#" ng-click="excluirItem(item)">excluir</a>
 							</td>
 						</tr>
-						<tr class="quantidade-total">
+						<tr class="quantidade-total" ng-show="getQuantidadeTotal() > 0">
 							<td colspan="2"><strong>Total</strong></td>
 							<td>{{getQuantidadeTotal()}}</td>
 							<td></td>

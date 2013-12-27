@@ -1,11 +1,13 @@
 function ListaComprasController($scope, $http, $window){
 
-	$scope.items = [
-		{id:1, produto:"Leite", quantidade:2},
-		{id:2, produto:"Cerveja", quantidade:12}
-	];
+	//$scope.items = [
+//		{id:1, produto:"Leite", quantidade:2},
+//		{id:2, produto:"Cerveja", quantidade:12}
+	//];
 
-	var lastId = $scope.items[$scope.items.length - 1].id;
+	$scope.items = [];
+
+	var lastId = $scope.items.length >0 ? $scope.items[$scope.items.length - 1].id : 0;
 	var reset = function(){
 		$scope.item = {id:0, produto:'', quantidade:undefined}
 	};
@@ -13,22 +15,39 @@ function ListaComprasController($scope, $http, $window){
 
 	$scope.getQuantidadeTotal = function(){
 		var total = 0;
+		$window.console.log('total: ' + $scope.items.length);
+		if ($scope.items.length == 0)
+			return total;
+
 		for (var i = $scope.items.length - 1; i >= 0; i--) {
 			total += $scope.items[i].quantidade;
 		}
 
 		return total;
 	};
-
-	$scope.salvar = function(){
-		
-		if ($scope.item.id <= 0){
-			lastId++;
-			$scope.item.id = lastId;
-			$scope.items.push($scope.item);
+	var isModelValid = function(){
+		var quantidade = parseInt($scope.item.quantidade);
+		if (isNaN(quantidade))
+		{
+			alert('Quantidade não é um valor inteiro válido.')
+			return false;
 		}
 
-		reset();
+		return false;
+
+		
+	}
+	$scope.salvar = function(){
+		if (isModelValid())
+		{
+			if ($scope.item.id <= 0){
+				lastId++;
+				$scope.item.id = lastId;
+				$scope.items.push($scope.item);
+			}
+
+			reset();
+		}
 	}
 
 	$scope.excluirItem = function(item){
