@@ -1,10 +1,5 @@
 function ListaComprasController($scope, $http, $window){
 
-	//$scope.items = [
-//		{id:1, produto:"Leite", quantidade:2},
-//		{id:2, produto:"Cerveja", quantidade:12}
-	//];
-
 	$scope.items = [];
 
 	var lastId = $scope.items.length >0 ? $scope.items[$scope.items.length - 1].id : 0;
@@ -15,7 +10,7 @@ function ListaComprasController($scope, $http, $window){
 
 	$scope.getQuantidadeTotal = function(){
 		var total = 0;
-		$window.console.log('total: ' + $scope.items.length);
+		//$window.console.log('total: ' + $scope.items.length);
 		if ($scope.items.length == 0)
 			return total;
 
@@ -33,7 +28,7 @@ function ListaComprasController($scope, $http, $window){
 			return false;
 		}
 
-		return false;
+		return true;
 
 		
 	}
